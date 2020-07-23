@@ -24,7 +24,10 @@ class HomePage extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
+          ///大图
           BannerInfo(bannerImage: bannerImage),
+
+          ///评论、图片、点赞
           ArticleCard(
             userInfo: userInfo,
             articleInfo: articleInfo,

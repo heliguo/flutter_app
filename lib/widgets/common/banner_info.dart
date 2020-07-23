@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/utils/fade_in_image_without_auth.dart';
 
 /// banner 展示组件
 ///
@@ -21,11 +22,19 @@ class BannerInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Image.network(
-          bannerImage,
+//        Image.network(
+//          bannerImage,
+//          width: MediaQuery.of(context).size.width,
+//          height: MediaQuery.of(context).size.height / 2,
+//          fit: BoxFit.cover,
+//        ),
+        new FadeInImageWithoutAuth.assetNetwork(
+          placeholder: 'assets/flower.jpg',
+          image: bannerImage,
           width: MediaQuery.of(context).size.width,
-          fit: BoxFit.cover,
-        ),
+          height: MediaQuery.of(context).size.width,
+          fit: BoxFit.fill,
+        )
 //        FadeInImageWithoutAuth.assetNetwork(
 //          placeholder: bannerImage,
 //          image:bannerImage,

@@ -3,6 +3,8 @@ import 'dart:isolate';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/home_page.dart';
 
+import 'Inherite/name_game.dart';
+
 
 void main() {
   ///主界面
@@ -87,21 +89,57 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    /**
-     * 无状态widget StatelessWidget
-     * return Container(
-        //⽩⾊背景
-        color: Colors.blue,
-        //Dart语法中，?? 表示如果text为空，就返回尾号后的内容。
-        child: Text(_string ?? "这就是⽆状态DMEO"),
-        );
-     */
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
+    return MaterialApp(
+        title: 'Two You', // APP 名字
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue, // APP 主题
         ),
-        body: Center(
-            child: HomePage()
-        ));
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text('Two You'), // 页面名字
+            ),
+            body: Center(
+              child: NameGame(),
+            )));
   }
 }
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return MaterialApp(
+//        title: 'Two You', // APP 名字
+//        debugShowCheckedModeBanner: false,
+//        theme: ThemeData(
+//          primarySwatch: Colors.blue, // APP 主题
+//        ),
+//        home: Scaffold(
+//            appBar: AppBar(
+//              title: Text('Two You'), // 页面名字
+//            ),
+//            body: Center(
+//              child: NameGame(),
+//            )));
+//  }
+//}
+
+//  @override
+//  Widget build(BuildContext context) {
+//    /**
+//     * 无状态widget StatelessWidget
+//     * return Container(
+//        //⽩⾊背景
+//        color: Colors.blue,
+//        //Dart语法中，?? 表示如果text为空，就返回尾号后的内容。
+//        child: Text(_string ?? "这就是⽆状态DMEO"),
+//        );
+//     */
+//    return Scaffold(
+//        appBar: AppBar(
+//          title: Text(widget.title),
+//        ),
+//        body: Center(
+//            child: HomePage()
+//        ));
+//  }
+//}
