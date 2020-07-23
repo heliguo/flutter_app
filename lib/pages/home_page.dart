@@ -1,51 +1,36 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
-import 'package:intl/intl.dart'; // 需要在pubspec.yaml增加该模块
+import 'package:flutter_app/struct/article_summary_struct.dart';
+import 'package:flutter_app/struct/user_info_struct.dart';
+import 'package:flutter_app/widgets/common/banner_info.dart';
+import 'package:flutter_app/widgets/home_page/article_card.dart';
 
-class HomePage extends StatefulWidget {
-  /// 当前时间显示的前缀信息
-  final String prefix = '当前时间';
+class HomePage extends StatelessWidget {
+  /// banner 地址信息 加载HTTP图片没问题
+  final String bannerImage = 'http://192.168.20.133:8866/app/pic.jpg';
 
-  @override
-  createState() => HomePageState();
-}
+  /// 帖子标题 使用asset本地图片没问题
+  final UserInfoStruct userInfo = UserInfoStruct('flutter', '');
 
-class HomePageState extends State<HomePage> {
-  /// 展示当前时间字符串
-  String currentTimeStr;
-
-  @override
-  void initState() {
-    super.initState();
-    this.currentTimeStr = getCurrentTime();
-    refreshTimeStr();
-  }
-
-  /// 更新当前时间字符串 [currentTimeStr]
-  ///
-  /// 每 500ms 更新一次，使用 Timer
-  void refreshTimeStr() {
-    const period = Duration(milliseconds: 500);
-    // 定时更新当前时间的 currentTimeStr 字符串
-    Timer.periodic(period, (timer) {
-      setState(() {
-        this.currentTimeStr = getCurrentTime();
-      });
-    });
-  }
-
-  String getCurrentTime() {
-    DateTime dateTime = DateTime.now();
-    var formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
-    String time = formatter.format(dateTime);
-    return '$time';
-  }
+  /// 帖子概要描述信息
+  final ArticleSummaryStruct articleInfo = ArticleSummaryStruct(
+      '你好，交个朋友',
+      '我是一个小可爱',
+      'https://img.089t.com/content/20200227/osbbw9upeelfqnxnwt0glcht.jpg',
+      20,
+      30);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[Text(widget.prefix), Text(this.currentTimeStr)],
+    return Container(
+      child: Column(
+        children: <Widget>[
+          BannerInfo(bannerImage: bannerImage),
+          ArticleCard(
+            userInfo: userInfo,
+            articleInfo: articleInfo,
+          ),
+        ],
+      ),
     );
   }
 }

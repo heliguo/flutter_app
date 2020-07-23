@@ -1,8 +1,6 @@
-import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/test_lifecycle.dart';
 import 'package:flutter_app/pages/home_page.dart';
 
 
@@ -46,7 +44,6 @@ void isolateServer() async {
 
     /// 打印全局 name 的数据
     print("Myname is $name");
-
   });
 }
 
@@ -61,7 +58,6 @@ void changName(SendPort port) {
 
   /// 打印当前线程中的 name
   print("Myname is $name in isloate");
-
 }
 
 class MyApp extends StatelessWidget {
@@ -105,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Center(
-          child: HomePage()
+            child: HomePage()
         ));
   }
 }
